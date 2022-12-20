@@ -1,0 +1,20 @@
+#
+# .mdファイルに限定してみる
+#
+name: test
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+    paths:
+      - "**.md"
+jobs:
+  container-test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:3.1.2
+    steps:
+      - name: show ruby version
+        run: ruby -v
